@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Player()
+comment0.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ Player\r\n
+comment1.params=
+comment1.target=int\ get_score()
+comment2.params=x
+comment2.target=void\ add_score(int)
+comment3.params=
+comment3.target=java.lang.String\ get_name()
+comment4.params=
+comment4.target=void\ set_name()
+numComments=5

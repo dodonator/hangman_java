@@ -1,0 +1,39 @@
+
+/**
+ * Die Klasse Game steuert ein Spiel mit mehreren Runden
+ * 
+ * @author Götz und Dominik 
+ * @version 9.11
+ */
+public class Game
+{
+    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    private int x;
+
+    /**
+     * Konstruktor für Objekte der Klasse Game
+     */
+    public Game()
+    {
+        // Instanzvariable initialisieren
+        x = 0;
+    }
+
+    /**
+     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * 
+     * @param  y    ein Beispielparameter für eine Methode
+     * @return        die Summe aus x und y
+     */
+    public int beispielMethode(int y)
+    {
+        // tragen Sie hier den Code ein
+        return x + y;
+    }
+    
+    public List round_word(Player player_1, Player player_2){
+        // Zwei Spieler werden übergeben und zwei Spieler
+        // werden zurückgegeben.
+        return [player_1, player_2]
+    }
+}

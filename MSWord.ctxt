@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=word
+comment0.target=MSWord(java.lang.String)
+comment1.params=
+comment1.target=int\ get_rating()
+comment2.params=
+comment2.target=java.lang.String\ get_word()
+comment3.params=
+comment3.target=int\ get_difficulty()
+comment4.params=word
+comment4.target=int\ rating_method(java.lang.String)
+comment5.params=str\ letter
+comment5.target=int\ countLetter(java.lang.String,\ char)
+comment6.params=
+comment6.target=java.util.Map\ create_map()
+comment7.params=
+comment7.target=int\ set_difficulty()
+numComments=8
