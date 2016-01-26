@@ -26,13 +26,16 @@ public class PVP
             result = round_word (result[0], result[1]);
             Out.println(result[0].get_name() + " : " + result[0].get_score());
             Out.println(result[1].get_name() + " : " + result[1].get_score());
+            Out.println("Beliebiges Zeichen zum fortfahren eingeben!");
             Out.println("Q zum Beenden drücken");
-            Scanner input = new Scanner(System.in);
-            String answer = input.next();
-            if((answer == "Q") || (answer == "q")){
+            String answer = In.readWord();
+            if((answer.equals("Q")) || (answer.equals("q"))){
                 Out.println("Beenden");
                 running = false;
                 break;
+            }
+            else{
+                In.done();
             }
 
         }
@@ -54,7 +57,7 @@ public class PVP
     }
 
     public Human[] round_word(Human human_1, Human human_2){
-        // Zwei Spieler werden übergeben und zwei Spieler
+        // Zwei Menschen werden übergeben und zwei Menschen
         // werden zurückgegeben.
         Scanner input = new Scanner(System.in);
 
@@ -72,7 +75,7 @@ public class PVP
         List<String> used_chars = new ArrayList<String>();
         int L = word.length();
 
-        for (int i = 0; i <= word.length(); i++){
+        for (int i = 0; i <= L; i++){
             // output_word = output_word + "-"
             output_word.append("-");
         }
@@ -87,13 +90,13 @@ public class PVP
 
             String Try = human_2.guess();
             if (Try.length() == 1){
-                Out.println("It's a char!");
+                // Out.println("It's a char!");
                 used_chars.add(Try);
-                Out.println(used_chars);
+                // Out.println(used_chars);
                 if (word.contains(Try)){
                     // int tmp = word.indexOf(Try);
                     // output_word = output_word.substring(0, tmp)+ Try + output_word.substring(tmp+1, L);
-                    
+
                     for (int o = 0; o < word.length(); o++){
                         String tmp = word.substring(o, o+1);
                         if (used_chars.contains(tmp)){
@@ -111,9 +114,11 @@ public class PVP
             }
             else{
                 if (Try.length() == word.length()){
-                    if (Try.toUpperCase() == word.toUpperCase()){
+
+                    if (Try.toUpperCase().equals(word.toUpperCase())){
                         human_2.add_score(1);
                         running = false;
+                        Out.println("Das Wort wurde erraten!");
                         break;
                     }
                 }
@@ -122,9 +127,10 @@ public class PVP
                 }
             }
 
-            if (output_word.toString().toUpperCase() == word.toUpperCase()){
+            if (output_word.toString().toUpperCase().equals(word.toUpperCase())){
                 human_2.add_score(1);
                 running = false;
+                Out.println("Das Wort wurde erraten!");
                 break;
             }
 

@@ -122,7 +122,7 @@ public class MSWord
         map.put("Y", 4);
         map.put("X", 3);
         map.put("Q", 2);
-        // System.out.println("The table was created");
+        // Out.println("The table was created");
         return map;
     }
     
@@ -130,7 +130,8 @@ public class MSWord
     public int set_difficulty(){
         int diff = 0;
         int score = this.get_rating();
-        // diff = 1000 / score;
+        // Diese Formel kann noch optimiert werden:
+        diff = 50 - (score / 100);
         return diff;
     }
 }
