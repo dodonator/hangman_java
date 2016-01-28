@@ -24,33 +24,32 @@ public class PVC
         result[1] = computer;
         
         while(running) {
-            result = round_word (result[1], result[0]);
-            System.out.println(result[0].get_name() + " : " + result[0].get_score());
-            System.out.println(result[1].get_name() + " : " + result[1].get_score());
-            System.out.println("Q zum Beenden drücken");
-            Scanner input = new Scanner(System.in);
-            String answer = input.next();
-            if(answer == "Q" || answer == "q"){
+            result = round_word (result[0], result[1]);
+            Out.println(result[0].get_name() + " : " + result[0].get_score());
+            Out.println(result[1].get_name() + " : " + result[1].get_score());
+            Out.println("Q zum Beenden drücken");
+            String answer = In.readWord();
+			if(answer.equals("Q") || answer.equals("q")){
                 running =false;
                 break;
             }
 
         }
         
-        System.out.println(player.get_name() + " : " + player.get_score());
-        System.out.println(computer.get_name() + " : " + computer.get_score());
+        Out.println(player.get_name() + " : " + player.get_score());
+        Out.println(computer.get_name() + " : " + computer.get_score());
         
         if(player.get_score() > computer.get_score()){
-            System.out.println(player.get_name() + " hat gewonnen!");
+            Out.println(player.get_name() + " hat gewonnen!");
         }
         
         else {
             
             if(player.get_score() == computer.get_score()){
-                System.out.println("Es steht Unentschieden	");
+                Out.println("Es steht Unentschieden	");
             }
             else{
-                System.out.println(computer.get_name() + " hat gewonnen!");
+                Out.println(computer.get_name() + " hat gewonnen!");
             }
         
         }
@@ -83,11 +82,11 @@ public class PVC
         }
         
         while (running = true){
-            System.out.println(output_word);
-            System.out.println("Fehler: " + fail_counter);
-            System.out.println();
+            Out.println(output_word);
+            Out.println("Fehler: " + fail_counter);
+            Out.println();
             
-            if (output_word == word){
+            if (output_word.equals(word)){
                 computer.add_score(1);
                 running = false;
                 break;
@@ -120,7 +119,7 @@ public class PVC
     
     public void clear(int n){
         for (int i = 0; i <= n; i++){
-            System.out.println("");
+            Out.println("");
         }
     }
 }
