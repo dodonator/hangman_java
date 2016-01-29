@@ -1,9 +1,9 @@
 import java.io.*;
 import java.util.*;
 /**
- * Human ist die Klasse fÃ¼r einen menschlichen Spieler
+ * Human ist die Klasse für einen menschlichen Spieler
  * 
- * @author GÃ¶tz und Dominik
+ * @author Götz und Dominik
  * @version 9.11
  */
 public class Human extends Player
@@ -18,6 +18,13 @@ public class Human extends Player
         
     }
 
+    public void set_name(){
+        Out.println("Spieler: ");
+        Out.println("Bitte geben Sie ihren Namen ein");
+        this.name = In.readWord();
+        Out.println("");
+    }
+    
     public String word_input()
     {
         Scanner input = new Scanner(System.in);

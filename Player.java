@@ -10,7 +10,7 @@ import java.util.*;
 public class Player
 {
     private int score;
-    private String name;
+    public String name;
 
     /**
      * Konstruktor für Objekte der Klasse Player

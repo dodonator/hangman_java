@@ -2,7 +2,11 @@
 comment0.params=
 comment0.target=AI()
 comment1.params=
-comment1.target=java.lang.String\ word_input()
+comment1.target=void\ set_name()
 comment2.params=
-comment2.target=java.lang.String\ guess()
-numComments=3
+comment2.target=java.lang.String\ word_input()
+comment3.params=
+comment3.target=java.util.Map\ create_table()
+comment4.params=
+comment4.target=java.lang.String\ guess()
+numComments=5

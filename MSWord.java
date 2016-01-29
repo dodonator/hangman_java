@@ -10,52 +10,47 @@ import java.util.*;
 
 public class MSWord
 {
-    
+
     private int rating;
     private String word;
     private Map table;
     private int difficulty;
 
-    
     public MSWord(String word)
     {
         // Instanzvariable initialisieren
         this.word = word;
-        this.table = this.create_map();
+        this.table = this.create_table();
         this.rating = this.rating_method(word);
         this.difficulty = this.set_difficulty();
 
     }
 
-    
     public int get_rating()
     {
         return this.rating;
     }
 
-    
     public String get_word()
     {
         return this.word;
     }
 
-    
     public int get_difficulty(){
         return this.difficulty;
     }
-    
-    
+
     public int rating_method(String word)
     {
         int score = 0;
         word = word.toUpperCase();
-        
+
         // L = Length
         int L = word.length();
-        
+
         // Re = Repetitions
         int Re = 0;
-        
+
         // Ra = Rarity
         int Ra = 0;
 
@@ -72,12 +67,11 @@ public class MSWord
         }
 
         score = L + Ra + Re;
-        
+
         return score;
 
     }
 
-    
     private static int countLetter(String str, char letter) {
         str = str.toLowerCase();       
         letter = Character.toLowerCase(letter);    
@@ -94,39 +88,25 @@ public class MSWord
     }
 
     
-    public Map create_map(){
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("E", 1740);
-        map.put("N", 978);
-        map.put("I", 755);
-        map.put("S", 727);
-        map.put("R", 700);
-        map.put("A", 651);
-        map.put("T", 615);
-        map.put("D", 508);
-        map.put("H", 476);
-        map.put("U", 435);
-        map.put("L", 344);
-        map.put("C", 306);
-        map.put("G", 301);
-        map.put("M", 253);
-        map.put("O", 251);
-        map.put("B", 189);
-        map.put("W", 189);
-        map.put("F", 166);
-        map.put("K", 121);
-        map.put("Z", 113);
-        map.put("P", 79);
-        map.put("V", 67);
-        map.put("J", 27);
-        map.put("Y", 4);
-        map.put("X", 3);
-        map.put("Q", 2);
-        // Out.println("The table was created");
-        return map;
+    public Map create_table(){ 
+        Map<String, Integer> table = new HashMap<String, Integer>();
+        String[] parts;
+        String chr;
+        Integer value;
+        In.open("ht.txt");
+        String tmp = In.readWord();
+        while(In.done()){
+            parts = tmp.split(";");
+            chr = parts[0];
+            value = Integer.valueOf(parts[1]);
+            table.put(chr, value);
+            Out.println(chr + " : " + value);
+            tmp = In.readWord();
+        }
+        In.close();
+        return table;
     }
-    
-    
+
     public int set_difficulty(){
         int diff = 0;
         int score = this.get_rating();

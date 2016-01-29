@@ -11,13 +11,16 @@ import java.util.*;
 
 public class PVP
 {
-    Human human_1 = new Human();
-    Human human_2 = new Human();
+    Human human_1;
+    Human human_2;
 
     public PVP()
     {
         boolean running = true;
 
+        human_1 = new Human();
+        human_2 = new Human();
+        
         Human[] result = new Human[2];
         result[0] = human_1;
         result[1] = human_2;
