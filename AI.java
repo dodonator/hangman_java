@@ -35,6 +35,7 @@ public class AI extends Player
         Random random = new Random();
         int index = random.nextInt(word_list_len);
         String word = (String) word_list.get(index);        
+        word = word.toUpperCase();
 
         MSWord W = new MSWord(word);
         int rating = W.get_rating();
@@ -55,30 +56,51 @@ public class AI extends Player
             chr = parts[0];
             value = Integer.valueOf(parts[1]);
             table.put(chr, value);
-            Out.println(chr + " : " + value);
+            // Out.println(chr + " : " + value);
             tmp = In.readWord();
         }
         In.close();
         return table;
     }
 
+    public  String generate_alphabet() {
+        StringBuilder alphabet = new StringBuilder();
+        table = this.table;
+        String key;
+        int value;
+        Iterator it = table.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            // Out.println(pair.getKey() + " = " + pair.getValue());
+            key = (String) pair.getKey();
+            value = (Integer) pair.getValue();
+            if ( (value / 100) == 0){
+                value = 1;
+            }
+            else{
+                value = value / 100;
+            }
+            for (int i = 0; i <= value; i++){
+                alphabet.append(key);
+            }
+            it.remove();
+        }
+        String result = alphabet.toString();
+        return result;
+    }
+
     public String guess()
     {
-        String[] Alphabet = {"A", "B", "C", "D", "E",
-                "F", "G", "H", "I", "J",
-                "K", "L", "M", "N", "O",
-                "P", "Q", "R", "S", "T",
-                "U", "V", "W", "X", "Y",
-                "Z", "A", "E", "I", "O",
-                "U", "N", "R", "S", "T",
-                "M", "E", "N", "I", "S",
-            };
+        String Alphabet = new String();
+        Random random = new Random();
         String tmp = new String();
+        Alphabet = this.generate_alphabet();
+        int index = 0;
         boolean running = true;
         while (running){
-            Random random = new Random();
-            int index = random.nextInt(Alphabet.length);
-            tmp = Alphabet[index];
+            Alphabet = this.generate_alphabet();
+            index = random.nextInt(Alphabet.length());
+            tmp = Alphabet.substring(index, index+1);
             if (used_chars.contains(tmp)){
                 running = true;
             }
@@ -88,6 +110,7 @@ public class AI extends Player
                 break;
             }
         }
+        Out.println(Alphabet);
         Out.println(tmp);
         return tmp;
     }
