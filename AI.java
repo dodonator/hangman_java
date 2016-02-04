@@ -1,6 +1,7 @@
 import java.util.*; 
+
 /**
- * @author Götz und Dominik
+ * @author Goetz und Dominik
  * @version 9.11
  */
 
@@ -19,7 +20,7 @@ public class AI extends Player
 
     public String word_input()
     {
-        // Hier sollen Worte aus einer Wortliste gelesen werden
+        // Hier werden die Worte aus einer Wortliste gelesen!
         List word_list = new ArrayList<String>();
         int word_list_len = 0;
         In.open("wortliste.txt");
@@ -86,15 +87,17 @@ public class AI extends Player
             it.remove();
         }
         String result = alphabet.toString();
+        this.table = this.create_table();
         return result;
     }
 
     public String guess()
     {
-        String Alphabet = new String();
+        String Alphabet;
         Random random = new Random();
         String tmp = new String();
         Alphabet = this.generate_alphabet();
+        this.create_table();
         int index = 0;
         boolean running = true;
         while (running){
@@ -110,8 +113,6 @@ public class AI extends Player
                 break;
             }
         }
-        Out.println(Alphabet);
-        Out.println(tmp);
         return tmp;
     }
 }
