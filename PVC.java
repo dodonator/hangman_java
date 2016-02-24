@@ -61,6 +61,7 @@ public class PVC
     public Player[] round_word(Player pPlayer, Player pComputer){
         // Zwei Spieler werden übergeben und zwei Spieler
         // werden zurückgegeben.
+        this.clear();
         
         Human player = (Human) pPlayer;
         AI computer = (AI) pComputer;
@@ -82,7 +83,7 @@ public class PVC
         }
 
         while (running = true){
-            this.clear(20);
+            this.clear();
             Out.println(output_word);
             Out.println("Fehler: " + fail_counter + " / " + fail_limit);
             Out.println(used_chars);
@@ -156,9 +157,7 @@ public class PVC
     }
 
     
-    public void clear(int n){
-        for (int i = 0; i <= n; i++){
-            Out.println("");
-        }
+    public void clear(){
+        Out.print('\u000C');
     }
 }

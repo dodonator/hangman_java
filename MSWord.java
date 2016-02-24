@@ -100,7 +100,7 @@ public class MSWord
             chr = parts[0];
             value = Integer.valueOf(parts[1]);
             table.put(chr, value);
-            Out.println(chr + " : " + value);
+            // Out.println(chr + " : " + value);
             tmp = In.readWord();
         }
         In.close();

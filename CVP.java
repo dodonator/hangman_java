@@ -22,7 +22,7 @@ public class CVP
         Player[] result = new Player[2];
         result[0] = computer;
         result[1] = player;
-
+        
         while(running) {
             result = round_word (result[0], result[1]);
             Out.println(result[0].get_name() + " : " + result[0].get_score());
@@ -57,7 +57,7 @@ public class CVP
     }
 
     public Player[] round_word(Player pComputer, Player pPlayer){
-
+        this.clear();
         Human player = (Human) pPlayer;
         AI computer = (AI) pComputer;
         
@@ -78,7 +78,7 @@ public class CVP
         }
 
         while (running = true){
-            this.clear(20);
+            this.clear();
             Out.println(output_word);
             Out.println("Fehler: " + fail_counter + " / " + fail_limit);
             Out.println(used_chars);
@@ -108,7 +108,6 @@ public class CVP
             }
             else{
                 if (Try.length() == word.length()){
-
                     if (Try.toUpperCase().equals(word.toUpperCase())){
                         player.add_score(1);
                         running = false;
@@ -125,7 +124,7 @@ public class CVP
                     fail_counter += 1;
                 }
             }
-
+            
             if (output_word.toString().toUpperCase().equals(word.toUpperCase())){
                 player.add_score(1);
                 running = false;
@@ -138,7 +137,9 @@ public class CVP
 
             if (fail_counter == fail_limit){
                 computer.add_score(1);
+                Out.println();
                 Out.println("Das Wort war: " + word);
+                Out.println();
                 running = false;
                 break;
             }
@@ -151,9 +152,7 @@ public class CVP
         return opponents;
     }
 
-    public void clear(int n){
-        for (int i = 0; i <= n; i++){
-            Out.println("");
-        }
+    public void clear(){
+        Out.print('\u000C');
     }
 }

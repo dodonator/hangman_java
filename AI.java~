@@ -8,64 +8,41 @@ import java.util.*;
 public class AI extends Player
 {
     public List used_chars = new ArrayList<String>();
-    public List word_list = new ArrayList<String>();
     public Map table;
-    public int word_list_len = 0;
-    public String list_filename = new String();
-
     public AI()
     {
         table = this.create_table();
-
-        Out.println("1: Wortliste 1");
-        Out.println("   Selbst zusammengestellt, auf Hangman angepasst");
-        Out.println("");
-        Out.println("2: Wortliste 2");
-        Out.println("   Komplette Wortliste der deutschen Sprache, auch Beugungen möglich");
-        Out.println("");
-        Out.println("3: Wortliste 3");
-        Out.println("   Umfangreiche Wortliste, nur Substantive");
-        Out.println("");
-        Out.println("Suchen Sie sich eine Liste aus");
-        String list = In.readWord();
-        this.list_filename = "wortliste" + list + ".txt";
-
-        word_list_input();
     }
 
     public void set_name(){
         this.name = "Computer";
     }
 
-    public void word_list_input(){
-        In.open(this.list_filename);
+    public String word_input()
+    {
+        // Hier werden die Worte aus einer Wortliste gelesen!
+        List word_list = new ArrayList<String>();
+        int word_list_len = 0;
+        In.open("wortliste.txt");
         String tmpWord = In.readWord();
         while (In.done()){
-            if (tmpWord.length() <= 10){
-                word_list.add(tmpWord);
-                this.word_list_len += 1;
-                // Out.println(tmpWord);
-            }
-            else{
-                // Out.println("### " + tmpWord);
-            }
+            word_list.add(tmpWord);
+            word_list_len += 1;
+            // Out.println(tmpWord);
             tmpWord = In.readWord();
         }
         In.close();
-        Out.println("Anzahl Woerter: " + word_list_len);
-    }
 
-    public String word_input()
-    {
         Random random = new Random();
-        int index = random.nextInt(this.word_list_len);
-        String word = (String) this.word_list.get(index);        
+        int index = random.nextInt(word_list_len);
+        String word = (String) word_list.get(index);        
         word = word.toUpperCase();
 
         MSWord W = new MSWord(word);
         int rating = W.get_rating();
         int diff = W.get_difficulty();
         return word;
+
     }
 
     public Map create_table(){ 
@@ -110,8 +87,6 @@ public class AI extends Player
             it.remove();
         }
         String result = alphabet.toString();
-        Out.println(result);
-        this.table = this.create_table();
         return result;
     }
 
@@ -121,7 +96,7 @@ public class AI extends Player
         Random random = new Random();
         String tmp = new String();
         Alphabet = this.generate_alphabet();
-        this.create_table();
+	create_table();
         int index = 0;
         boolean running = true;
         while (running){
@@ -137,6 +112,8 @@ public class AI extends Player
                 break;
             }
         }
+        Out.println(Alphabet);
+        Out.println(tmp);
         return tmp;
     }
 }
