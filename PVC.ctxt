@@ -5,4 +5,6 @@ comment1.params=pPlayer\ pComputer
 comment1.target=Player[]\ round_word(Player,\ Player)
 comment2.params=
 comment2.target=void\ clear()
-numComments=3
+comment3.params=current\ maximum
+comment3.target=java.lang.String\ bar(int,\ int)
+numComments=4

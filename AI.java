@@ -1,6 +1,9 @@
 import java.util.*; 
 
 /**
+ * Die Klasse AI raet Woerter, welche vom Spieler eingegeben wurden oder
+ * laesst den Spieler Woerter aus einer Liste raten.
+ * 
  * @author Goetz und Dominik
  * @version 9.11
  */
@@ -44,15 +47,12 @@ public class AI extends Player
             if (tmpWord.length() <= 10){
                 word_list.add(tmpWord);
                 this.word_list_len += 1;
-                // Out.println(tmpWord);
-            }
-            else{
-                // Out.println("### " + tmpWord);
+                
             }
             tmpWord = In.readWord();
         }
         In.close();
-        Out.println("Anzahl Woerter: " + word_list_len);
+        Out.println("Anzahl Woerter: " + this.word_list_len);
     }
 
     public String word_input()
@@ -75,14 +75,15 @@ public class AI extends Player
         Integer value;
         In.open("ht.txt");
         String tmp = In.readWord();
+        
         while(In.done()){
             parts = tmp.split(";");
             chr = parts[0];
             value = Integer.valueOf(parts[1]);
             table.put(chr, value);
-            // Out.println(chr + " : " + value);
             tmp = In.readWord();
         }
+        
         In.close();
         return table;
     }
@@ -93,9 +94,9 @@ public class AI extends Player
         String key;
         int value;
         Iterator it = table.entrySet().iterator();
+        
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            // Out.println(pair.getKey() + " = " + pair.getValue());
             key = (String) pair.getKey();
             value = (Integer) pair.getValue();
             if ( (value / 100) == 0){
@@ -109,9 +110,10 @@ public class AI extends Player
             }
             it.remove();
         }
+        
         String result = alphabet.toString();
-        Out.println(result);
         this.table = this.create_table();
+        
         return result;
     }
 
@@ -124,6 +126,7 @@ public class AI extends Player
         this.create_table();
         int index = 0;
         boolean running = true;
+        
         while (running){
             Alphabet = this.generate_alphabet();
             index = random.nextInt(Alphabet.length());
@@ -137,6 +140,7 @@ public class AI extends Player
                 break;
             }
         }
+        
         return tmp;
     }
 }

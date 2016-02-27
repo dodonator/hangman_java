@@ -22,7 +22,7 @@ public class CVP
         Player[] result = new Player[2];
         result[0] = computer;
         result[1] = player;
-        
+
         while(running) {
             result = round_word (result[0], result[1]);
             Out.println(result[0].get_name() + " : " + result[0].get_score());
@@ -60,7 +60,7 @@ public class CVP
         this.clear();
         Human player = (Human) pPlayer;
         AI computer = (AI) pComputer;
-        
+
         String name_c = computer.get_name();
         String name_h = player.get_name();
         String word = computer.word_input();
@@ -68,7 +68,7 @@ public class CVP
         boolean running = true;
         int fail_limit = 10;
         int fail_counter = 0;
-        
+
         StringBuilder output_word = new StringBuilder();
         List<String> used_chars = new ArrayList<String>();
         int L = word.length();
@@ -79,32 +79,23 @@ public class CVP
 
         while (running = true){
             this.clear();
-            Out.println(output_word);
-            Out.println("Fehler: " + fail_counter + " / " + fail_limit);
+            Out.println(output_word + "    " + word.length() + " Buchstaben");
+            Out.println(this.bar(fail_counter, fail_limit) + " Fehler: " + fail_counter + " / " + fail_limit);
             Out.println(used_chars);
             Out.println();
 
             output_word.delete(0, output_word.length());
 
             String Try = player.guess();
+
             if (Try.length() == 1){
                 // It's a char!
                 used_chars.add(Try);
-                
 
                 if (word.contains(Try) != true){
                     fail_counter += 1;
                 }
 
-                for (int o = 0; o < word.length(); o++){
-                    String tmp = word.substring(o, o+1);
-                    if (used_chars.contains(tmp)){
-                        output_word.append(tmp);
-                    }
-                    else{
-                        output_word.append("-");
-                    }
-                }
             }
             else{
                 if (Try.length() == word.length()){
@@ -117,14 +108,31 @@ public class CVP
                         Out.println("");
                         break;
                     }
+                    else
+                    {
+                        Out.println("");
+                        Out.println("Das war falsch!");
+                        Out.println("");
+                        fail_counter += 1;
+                    }
                 }
                 else{
                     Out.println("");
-                    Out.println("Keine Silben angeben!");
+                    Out.println("Entweder einen Buchstaben oder das ganze Wort ("+word.length()+" Buchstaben) eingeben!");
                     fail_counter += 1;
                 }
             }
-            
+
+            for (int o = 0; o < word.length(); o++){
+                String tmp = word.substring(o, o+1);
+                if (used_chars.contains(tmp)){
+                    output_word.append(tmp);
+                }
+                else{
+                    output_word.append("-");
+                }
+            }
+
             if (output_word.toString().toUpperCase().equals(word.toUpperCase())){
                 player.add_score(1);
                 running = false;
@@ -154,5 +162,22 @@ public class CVP
 
     public void clear(){
         Out.print('\u000C');
+    }
+
+    public String bar(int current, int maximum){
+        StringBuilder result = new StringBuilder();
+        result.append("[");
+        if(current >= 1){
+
+            for(int i = 1; i <= current;i++)
+            {
+                result.append("*");
+            }
+        }
+        for(int i=1; i <= (maximum-current);i++){
+            result.append(" ");
+        }
+        result.append("]");
+        return result.toString();
     }
 }

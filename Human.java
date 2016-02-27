@@ -9,13 +9,9 @@ import java.util.*;
 public class Human extends Player
 {
 
-
-    /**
-     * Constructor for objects of class Human
-     */
     public Human()
     {
-        
+
     }
 
     public void set_name(){
@@ -24,23 +20,38 @@ public class Human extends Player
         this.name = In.readWord();
         Out.println("");
     }
-    
+
     public String word_input()
     {
-        Scanner input = new Scanner(System.in);
         System.out.println(this.get_name() + ", bitte geben Sie ein Wort ein: ");
-        String word = input.next();
+        String word = In.readWord();
         word = word.toUpperCase();
+        if (word.equals("PENIS"))
+        {
+            Out.println("");
+            Out.println("Sorry, dein 'Wort' ist zu kurz!");
+            Out.println("");
+            this.sleep(2);
+        }
+
         return word;
     }
 
     public String guess()
     {
-        Scanner input = new Scanner(System.in);
         System.out.println(this.get_name() + ", bitte geben Sie einen Buchstaben ein: ");
-        String chr = input.next();
+        String chr = In.readWord();
         chr = chr.toUpperCase();
         return chr;
     }
-    
+
+    public void sleep(int seconds)
+    {
+        int milli_seconds = 1000 * seconds;
+        try {
+            Thread.sleep(milli_seconds);
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
 }

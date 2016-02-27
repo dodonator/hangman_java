@@ -2,9 +2,9 @@ import java.util.*;
 
 /**
  * MSWord beschreibt ein Wort und stellt eine Methode zum
- * Bewerten eines Wortes zur Verfügung.
+ * Bewerten eines Wortes zur Verfuegung.
  * 
- * @author Götz und Dominik
+ * @author Goetz und Dominik
  * @version 9.11
  */
 

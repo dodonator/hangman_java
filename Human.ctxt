@@ -1,11 +1,12 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Human()
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Human\n
 comment1.params=
 comment1.target=void\ set_name()
 comment2.params=
 comment2.target=java.lang.String\ word_input()
 comment3.params=
 comment3.target=java.lang.String\ guess()
-numComments=4
+comment4.params=seconds
+comment4.target=void\ sleep(int)
+numComments=5

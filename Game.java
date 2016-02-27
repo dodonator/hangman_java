@@ -1,19 +1,29 @@
 
 /**
- * Beschreiben Sie hier die Klasse Game.
+ * Die Klasse Game, laesst den Spieler den Spielmodus
+ * aussuchen und ruft diesen anschliessend auf.
  * 
  * @author Dominik und Götz
  * @version 9.11
  */
+
 public class Game
 {
 
     public Game()
     {
         String game_mode = "";
-        while ( !game_mode.equals("q")){
 
-            this.clear();
+        while ( !game_mode.equals("q")){
+            Out.println(" _    _ ");                                        
+            Out.println("| |  | | ");                                        
+            Out.println("| |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __ "); 
+            Out.println("|  __  |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ ");
+            Out.println("| |  | | (_| | | | | (_| | | | | | | (_| | | | |");
+            Out.println("|_|  |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|");
+            Out.println("                     __/ |                      ");
+            Out.println("                    |___/      ");
+            Out.println("");
             Out.println("0: Spieler gegen Spieler");
             Out.println("");
             Out.println("1: Spieler gegen Computer");
@@ -50,6 +60,16 @@ public class Game
                 }
             }
         }
+        // Good Bye!
+        Out.println("  _____                 _   ____ ");           
+        Out.println(" / ____|               | | |  _ \\   ");         
+        Out.println("| |  __  ___   ___   __| | | |_) |_   _  ___ ");
+        Out.println("| | |_ |/ _ \\ / _ \\ / _` | |  _ <| | | |/ _ \\");
+        Out.println("| |__| | (_) | (_) | (_| | | |_) | |_| |  __/");
+        Out.println(" \\_____|\\___/ \\___/ \\__,_| |____/ \\__, |\\___|");
+        Out.println("                                   __/ |     ");
+        Out.println("                                  |___/ ");
+
     }
 
     private void clear(){

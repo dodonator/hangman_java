@@ -32,8 +32,9 @@ public class PVP
             Out.println(result[1].get_name() + " : " + result[1].get_score());
             Out.println();
             Out.println("Beliebiges Zeichen zum fortfahren eingeben!");
-            Out.println("Q zum Beenden drücken");
+            Out.println("Q zum Beenden druecken");
             String answer = In.readWord();
+            
             if((answer.equals("Q")) || (answer.equals("q"))){
                 Out.println("Beenden");
                 running = false;
@@ -79,41 +80,31 @@ public class PVP
         List<String> used_chars = new ArrayList<String>();
         int L = word.length();
 
-        for (int i = 0; i <= L; i++){
+        for (int i = 0; i < L; i++){
             output_word.append("-");
         }
 
         while (running = true){
             this.clear();
-            Out.println(output_word);
-            Out.println("Fehler: " + fail_counter + " / " + fail_limit);
-
+            Out.println(output_word + "    " + word.length() + " Buchstaben");
+            Out.println(this.bar(fail_counter, fail_limit) + " Fehler: " + fail_counter + " / " + fail_limit);
+            Out.println(used_chars);
             Out.println();
 
             output_word.delete(0, output_word.length());
 
             String Try = human_2.guess();
+
             if (Try.length() == 1){
-                // Out.println("It's a char!");
+                // It's a char!
                 used_chars.add(Try);
-                // Out.println(used_chars);
-                if (word.contains(Try)){
-
-                    for (int o = 0; o < word.length(); o++){
-                        String tmp = word.substring(o, o+1);
-                        if (used_chars.contains(tmp)){
-                            output_word.append(tmp);
-                        }
-                        else{
-                            output_word.append("-");
-                        }
-                    }
-
-                }
-                else{
+                
+                if (word.contains(Try) != true){
                     fail_counter += 1;
                 }
+
             }
+            
             else{
                 if (Try.length() == word.length()){
 
@@ -126,9 +117,29 @@ public class PVP
                         Out.println("");
                         break;
                     }
+                    else
+                    {
+                        Out.println("");
+                        Out.println("Das war falsch!");
+                        Out.println("");
+                        fail_counter += 1;
+                    }
                 }
                 else{
+                    Out.println("");
+                    Out.println("Entweder einen Buchstaben oder das ganze Wort ("+word.length()+" Buchstaben) eingeben!");
+                    Out.println("");
                     fail_counter += 1;
+                }
+            }
+
+            for (int o = 0; o < word.length(); o++){
+                String tmp = word.substring(o, o+1);
+                if (used_chars.contains(tmp)){
+                    output_word.append(tmp);
+                }
+                else{
+                    output_word.append("-");
                 }
             }
 
@@ -161,5 +172,25 @@ public class PVP
 
     public void clear(){
         Out.print('\u000C');
+    }
+
+    public String bar(int current, int maximum){
+        StringBuilder result = new StringBuilder();
+        result.append("[");
+        
+        if(current >= 1){
+
+            for(int i = 1; i <= current;i++)
+            {
+                result.append("*");
+            }
+        }
+        
+        for(int i=1; i <= (maximum-current);i++){
+            result.append(" ");
+        }
+        
+        result.append("]");
+        return result.toString();
     }
 }

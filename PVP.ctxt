@@ -5,4 +5,6 @@ comment1.params=human_1\ human_2
 comment1.target=Human[]\ round_word(Human,\ Human)
 comment2.params=
 comment2.target=void\ clear()
-numComments=3
+comment3.params=current\ maximum
+comment3.target=java.lang.String\ bar(int,\ int)
+numComments=4
